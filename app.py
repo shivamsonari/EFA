@@ -38,6 +38,8 @@ def generate():
 
         #create a new excel file for every sheet
         for name in sheet_names:
+            xlrd.xlsx.ensure_elementtree_imported(False, None)
+            xlrd.xlsx.Element_has_iter = True
             
             if name in sheet :
                 
