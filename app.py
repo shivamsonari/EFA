@@ -21,16 +21,12 @@ cache= {}
 
     
 def createcommand(command, key, value):
-    
-    
-        
+         
     if (value!='dummy'):
-        
-        
+          
         if isinstance(value,list):
             value_tmp=''
             for i in value:
-                
                 value_tmp=str(value_tmp + " --" + key + ' ' + str(i))
             return str(command + value_tmp)
         elif isinstance(value,float):
@@ -40,8 +36,7 @@ def createcommand(command, key, value):
         else:
             value=str(value)
             return str(command + " --" + key + ' ' + value )
-    else:
-        
+    else:        
         return command
 
 
@@ -53,10 +48,9 @@ def home():
 @app.route("/generate", methods = ["GET", "POST"])
 def generate():
     
-    if cache == {}:
-        
-        
+    if cache == {}:              
         return render_template("upload_first.html") 
+
     if request.method == "POST":
         sheet = request.form.getlist('sheet')
         
@@ -74,10 +68,7 @@ def generate():
         for name1 in sheet_names:
             
             
-            if name1 in sheet :
-                
-    
-                
+            if name1 in sheet :         
 
                 #writing data to the new excel file
                 ## From here code will change it will be specific to a sheet
@@ -94,8 +85,6 @@ def generate():
                         tenant = []
                         for k in range(0,len(df['efa tenant create'])):
                             
-                            
-    
                             tenant_temp = {}
                             tenant_temp['name']=df['name'][k]
                             tenant_temp['description']=df['description'][k]
@@ -109,11 +98,7 @@ def generate():
                             tenant.append(tenant_temp)
 	                       
 	                       
-                        
-               
-                        
-               
-			         
+                      		         
                         lst1 = []
                         for i in tenant:
                             
