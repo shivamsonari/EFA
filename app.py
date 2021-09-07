@@ -11,6 +11,7 @@ from flask import send_file
 import numpy as np
 from flask import * 
 from werkzeug.utils import secure_filename
+import openpyxl
 
 
 
@@ -77,15 +78,15 @@ def generate():
             if name1 in sheet :
                 
     
-                parsing = pd.ExcelFile(inputFile).parse(sheetname = name1)
+                
 
                 #writing data to the new excel file
                 ## From here code will change it will be specific to a sheet
                 if name1 == "Tenant":#########################################
                     
                     
-                    df = pd.read_excel(inputFile, sheet_name=name1)
-                    df1 = pd.read_excel(inputFile, sheet_name=name1)
+                    df = pd.read_excel(inputFile, sheet_name=name1, engine='openpyxl')
+                    df1 = pd.read_excel(inputFile, sheet_name=name1, engine='openpyxl')
                     col_list=list(df1.columns)
                     df = df.replace(np.nan, 'dummy')
                     
