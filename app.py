@@ -53,9 +53,7 @@ def home():
 @app.route("/generate", methods = ["GET", "POST"])
 def generate():
     
-    if cache == {}:
-        
-        
+    if not 'file' in cache.keys(): 
         return render_template("upload_first.html") 
     if request.method == "POST":
         sheet = request.form.getlist('sheet')
